@@ -26,7 +26,6 @@ public class CategoryModel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer year;
     private String name;
     private String description;
     
@@ -50,14 +49,6 @@ public class CategoryModel implements Serializable{
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
     }
 
     public String getName() {
