@@ -5,6 +5,7 @@
 package co.usa.ciclo3.ciclo3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="category")
-public class CategoryModel {
+public class CategoryModel implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +34,6 @@ public class CategoryModel {
     @JsonIgnoreProperties("category")
     private List<MachineModel> machines;
 
-    
-    
     public List<MachineModel> getMachines() {
         return machines;
     }

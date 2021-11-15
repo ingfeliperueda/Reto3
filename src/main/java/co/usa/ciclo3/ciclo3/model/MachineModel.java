@@ -5,6 +5,7 @@
 package co.usa.ciclo3.ciclo3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="machine")
-public class MachineModel {
+public class MachineModel implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +34,8 @@ public class MachineModel {
     private String description;
     
     @ManyToOne
-    @JoinColumn(name ="category")
-    @JsonIgnoreProperties("machine")
+    @JoinColumn(name ="categoriaid")
+    @JsonIgnoreProperties("machines")
     private CategoryModel category;
     
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "machine")
@@ -44,7 +45,7 @@ public class MachineModel {
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "machine")
     @JsonIgnoreProperties({"machine", "messages"})
     private List<ReservationModel> reservations;
-
+        
     public Integer getId() {
         return id;
     }
@@ -108,7 +109,8 @@ public class MachineModel {
     public void setReservations(List<ReservationModel> reservations) {
         this.reservations = reservations;
     }
-
     
+    
+
     
 }

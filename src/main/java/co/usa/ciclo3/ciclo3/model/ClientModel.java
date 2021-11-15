@@ -5,6 +5,7 @@
 package co.usa.ciclo3.ciclo3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="client")
-public class ClientModel {
+public class ClientModel implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,23 +39,6 @@ public class ClientModel {
     @JsonIgnoreProperties("client")
     public List<ReservationModel>reservations;
 
-    public List<MessageModel> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(List<MessageModel> messages) {
-        this.messages = messages;
-    }
-
-    public List<ReservationModel> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<ReservationModel> reservations) {
-        this.reservations = reservations;
-    }
-
-    
     public Integer getId() {
         return id;
     }
@@ -94,7 +78,23 @@ public class ClientModel {
     public void setAge(int age) {
         this.age = age;
     }
-    
-    
+
+    public List<MessageModel> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<MessageModel> messages) {
+        this.messages = messages;
+    }
+
+    public List<ReservationModel> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<ReservationModel> reservations) {
+        this.reservations = reservations;
+    }
+
+       
     
 }

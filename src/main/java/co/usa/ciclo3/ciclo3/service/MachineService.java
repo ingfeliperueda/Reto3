@@ -42,4 +42,40 @@ public class MachineService {
         }
     }
     
+    public MachineModel update(MachineModel machine){
+        if(machine.getId()!=null){
+            Optional<MachineModel> e=machineRepository.getMachineModel(machine.getId());
+            if(!e.isEmpty()){
+                if(machine.getName()!=null){
+                    e.get().setName(machine.getName());
+                }
+                if(machine.getBrand()!=null){
+                    e.get().setBrand(machine.getBrand());
+                }
+                if(machine.getYear()!=null){
+                    e.get().setYear(machine.getYear());
+                }
+                if(machine.getDescription()!=null){
+                    e.get().setDescription(machine.getDescription());
+                }
+                if(machine.getCategory()!=null){
+                    e.get().setCategory(machine.getCategory());
+                }
+                machineRepository.save(e.get());
+                return e.get();
+            }else{
+                return machine;
+            }
+        }else{
+            return machine;
+        }
+    }
+    
+    public boolean deleteMachine(int machineId) {
+        Boolean aBoolean = getMachineModel(machineId).map(machine -> {
+            machineRepository.delete(machine);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
 }

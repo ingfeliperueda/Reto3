@@ -5,6 +5,7 @@
 package co.usa.ciclo3.ciclo3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="message")
-public class MessageModel {
+public class MessageModel implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +28,7 @@ public class MessageModel {
     private String messageText;
     
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name="machineId")
     @JsonIgnoreProperties({"messages","reservations"})
     private MachineModel machine;
 

@@ -35,4 +35,7 @@ public class MachineRepository {
         return machineCrudRepository.save(m);
     }
     
+    public void delete(MachineModel m){
+        machineCrudRepository.delete(m);
+    }
 }

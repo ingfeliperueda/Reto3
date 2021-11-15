@@ -5,6 +5,7 @@
 package co.usa.ciclo3.ciclo3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,13 +21,14 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="reservation")
-public class ReservationModel {
+public class ReservationModel implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Date startDate;
     private Date devolutionDate;
+    private String status="created";
     
     @ManyToOne
     @JoinColumn(name = "costumeId")
@@ -35,7 +37,7 @@ public class ReservationModel {
 
     @ManyToOne
     @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties({"reservations","messages"})
+    @JsonIgnoreProperties("client")
     private ClientModel client;
     
     public Integer getId() {
