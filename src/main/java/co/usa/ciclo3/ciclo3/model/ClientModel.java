@@ -25,7 +25,7 @@ public class ClientModel implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idClient;
     private String email;
     private String password;
     private String name;
@@ -39,12 +39,12 @@ public class ClientModel implements Serializable{
     @JsonIgnoreProperties("client")
     public List<ReservationModel>reservations;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdClient() {
+        return idClient;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
     public String getName() {
