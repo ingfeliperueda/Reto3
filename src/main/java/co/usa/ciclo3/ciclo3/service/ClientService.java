@@ -30,10 +30,10 @@ public class ClientService {
     }
     
     public ClientModel save(ClientModel l){
-        if(l.getId()==null){
+        if(l.getIdClient()==null){
             return clientRepository.save(l);
         } else{
-            Optional<ClientModel> caux=clientRepository.getClientModel(l.getId());
+            Optional<ClientModel> caux=clientRepository.getClientModel(l.getIdClient());
             if(caux.isEmpty()){
                 return clientRepository.save(l);
             } else {
