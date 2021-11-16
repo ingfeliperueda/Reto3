@@ -37,8 +37,10 @@ public class ReservationModel implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties("client")
+    @JsonIgnoreProperties({"reservations","messages"})
     private ClientModel client;
+    
+    private Integer Score;
 
     public Integer getIdReservation() {
         return idReservation;
