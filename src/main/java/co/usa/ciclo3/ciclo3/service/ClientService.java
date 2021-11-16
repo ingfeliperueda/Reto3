@@ -42,4 +42,35 @@ public class ClientService {
         }
     }
     
+    public ClientModel update(ClientModel l){
+        if(l.getIdClient()!=null){
+            Optional<ClientModel> e= clientRepository.getClientModel(l.getIdClient());
+            if(!e.isEmpty()){
+                if(l.getName()!=null){
+                    e.get().setName(l.getName());
+                }
+                if(l.getAge()!=0){
+                    e.get().setAge(l.getAge());
+                }
+                if(l.getPassword()!=null){
+                    e.get().setPassword(l.getPassword());
+                }
+                clientRepository.save(e.get());
+                return e.get();
+            }else{
+                return l;
+            }
+        }else{
+            return l;
+        }
+    }
+
+    public boolean delete(int clientId) {
+        Boolean aBoolean = getClientModel(clientId).map(client -> {
+            clientRepository.delete(client);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
+    
 }

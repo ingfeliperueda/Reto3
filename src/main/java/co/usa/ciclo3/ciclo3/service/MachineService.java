@@ -71,7 +71,7 @@ public class MachineService {
         }
     }
     
-    public boolean deleteMachine(int machineId) {
+    public boolean delete(int machineId) {
         Boolean aBoolean = getMachineModel(machineId).map(machine -> {
             machineRepository.delete(machine);
             return true;

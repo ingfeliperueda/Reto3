@@ -11,6 +11,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+/**
+ *
+ * @author Felipe Rueda
+ */
 /**
  *
  * @author Felipe Rueda
@@ -40,5 +45,29 @@ public class CategoryService {
                 return c;
             }
         }
+    }
+
+    public CategoryModel update(CategoryModel c){
+        if(c.getId()!=null){
+            Optional<CategoryModel>g=categoryRepository.getCategoryModel(c.getId());
+            if(!g.isEmpty()){
+                if(c.getDescription()!=null){
+                    g.get().setDescription(c.getDescription());
+                }
+                if(c.getName()!=null){
+                    g.get().setName(c.getName());
+                }
+                return categoryRepository.save(g.get());
+            }
+        }
+        return c;
+    }
+    public boolean delete(int id){
+        Boolean d;
+        d = getCategoryModel(id).map(categoria -> {
+            categoryRepository.delete(categoria);
+            return true;
+        }).orElse(false);
+        return d;
     }
 }

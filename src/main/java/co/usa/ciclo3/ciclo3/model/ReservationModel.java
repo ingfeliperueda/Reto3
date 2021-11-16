@@ -90,6 +90,14 @@ public class ReservationModel implements Serializable{
         this.client = client;
     }
 
+    public Integer getScore() {
+        return Score;
+    }
+
+    public void setScore(Integer Score) {
+        this.Score = Score;
+    }
+
     
     
 }
