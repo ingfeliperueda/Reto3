@@ -25,7 +25,7 @@ public class ReservationModel implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
     private String status="created";
@@ -39,13 +39,13 @@ public class ReservationModel implements Serializable{
     @JoinColumn(name = "clientId")
     @JsonIgnoreProperties("client")
     private ClientModel client;
-    
-    public Integer getId() {
-        return id;
+
+    public Integer getIdReservation() {
+        return idReservation;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
     public Date getStartDate() {
@@ -63,5 +63,31 @@ public class ReservationModel implements Serializable{
     public void setDevolutionDate(Date devolutionDate) {
         this.devolutionDate = devolutionDate;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public MachineModel getMachine() {
+        return machine;
+    }
+
+    public void setMachine(MachineModel machine) {
+        this.machine = machine;
+    }
+
+    public ClientModel getClient() {
+        return client;
+    }
+
+    public void setClient(ClientModel client) {
+        this.client = client;
+    }
+
+    
     
 }

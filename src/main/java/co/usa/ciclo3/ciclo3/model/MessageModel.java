@@ -24,7 +24,7 @@ public class MessageModel implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idMessage;
     private String messageText;
     
     @ManyToOne
@@ -52,17 +52,15 @@ public class MessageModel implements Serializable{
     public void setClient(ClientModel client) {
         this.client = client;
     }
-    
-    
 
-    public Integer getId() {
-        return id;
+    public Integer getIdMessage() {
+        return idMessage;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdMessage(Integer idMessage) {
+        this.idMessage = idMessage;
     }
-
+    
     public String getMessageText() {
         return messageText;
     }
